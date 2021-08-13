@@ -22,7 +22,7 @@ import java.util.PriorityQueue;
 public class PriorityQueueAlgorism {
 
     public int solution(int[] scoville, int K) {
-        java.util.PriorityQueue<Integer> queue = new java.util.PriorityQueue<>();
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         int count = 0;
 
         for (int number : scoville) {
