@@ -1,5 +1,6 @@
 package com.level_03;
 
+// 참고 : https://velog.io/@sukong/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EA%B0%9C%EB%85%90-%EA%B9%8A%EC%9D%B4%EC%9A%B0%EC%84%A0%ED%83%90%EC%83%89DFS
 public class DFS {
 
 
@@ -24,13 +25,11 @@ public class DFS {
         // 전체 컴퓨터 방문
         for (int i = 0; i < n; i++) {
             if(!visit[i]){
-
                 //첫 노드부터 재귀함수 시작
                 dfs(n, computers, visit, i);
                 answer++;
             }
         }
-
         return answer;
     }
 
@@ -41,6 +40,37 @@ public class DFS {
             // 연결된 노드, 자신 제외, 아직 방문기록이 없는 노드
             if(computers[index][i] != 0 && index != i && !visit[i])
                 dfs(n,computers,visit,i);
+        }
+    }
+
+    //네트워크 다시 풀기 (직접 푼 것)
+    //문 11 / 13개 성공
+    public int solution1_2(int n, int[][] computers) {
+        boolean[] visited = new boolean[n];
+        int count = 0;
+
+        for(int i= 0; i<n ; i++){
+            dfs1_2(n, computers, visited, i);
+        }
+
+        boolean isTrueLessThanOne = false;
+        for (int i = 0; i < visited.length; i++) {
+            if(visited[i] == false) {
+                count += 1;
+            }else if( visited[i] == true && isTrueLessThanOne ==false){
+                isTrueLessThanOne = true;
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private void dfs1_2(int n, int[][] computers, boolean[] visited, int index){
+        for (int j = 0; j < n; j++) {
+            if(computers[index][j] ==1 && index!=j && visited[index] == false){
+                visited[index] = true;
+                dfs1_2(n,computers,visited,index);
+            }
         }
     }
 
