@@ -1,6 +1,5 @@
-package com.level_02;
+package com.programmers.level_02;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

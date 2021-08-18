@@ -1,8 +1,6 @@
-package com.level_01;
+package com.programmers.level_01;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Optional;
 
 public class Hash {
 

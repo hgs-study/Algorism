@@ -1,4 +1,4 @@
-package com.level_01;
+package com.programmers.level_01;
 
 public class Array2D {
 
