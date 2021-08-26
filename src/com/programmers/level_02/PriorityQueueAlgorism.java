@@ -1,4 +1,4 @@
-package com.level_02;
+package com.programmers.level_02;
 
 import java.util.PriorityQueue;
 

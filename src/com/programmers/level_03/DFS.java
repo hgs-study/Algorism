@@ -1,4 +1,4 @@
-package com.level_03;
+package com.programmers.level_03;
 
 import java.util.ArrayList;
 import java.util.Collections;
