@@ -12,43 +12,23 @@ public class DFS {
     //+1+1+1+1-1 = 3
     //
     //사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.
+    private int answer = 0;
+
     public int solution(int[] numbers, int target) {
-        return dfs(numbers, target, 0, 0);
+        dfs(numbers,target,0,0);
+        return answer;
     }
 
-    private int dfs(int[] numbers, int target, int depth, int sum) {
-        int matchCount = 0;
-
-        if (depth == numbers.length) {
-            if (sum == target) {
-                return 1;
-            }
-            return 0;
-        }
-
-        matchCount += dfs(numbers, target, depth + 1, sum + numbers[depth]);
-        matchCount += dfs(numbers, target, depth + 1, sum - numbers[depth]);
-        return matchCount;
-    }
-
-    //직접 풀어보기 dfs (타겟넘버)
-    private int count =0;
-    public int solution2_1(int[] numbers, int target) {
-        dfs2_1(numbers,target, 0, 0);
-        return count;
-    }
-
-    public void dfs2_1(int[] numbers, int target, int depth, int sum){
-
+    public void dfs(int[] numbers, int target, int sum, int depth){
         if(depth == numbers.length) {
-            if (target == sum) {
-                count++;
-            }
+            if (sum == target)
+                answer++;
             return;
         }
 
-        dfs2_1(numbers,target,depth + 1 , sum + numbers[depth]);
-        dfs2_1(numbers,target,depth +1, sum - numbers[depth]);
+        dfs(numbers,target,sum+numbers[depth], depth +1);
+        dfs(numbers,target,sum-numbers[depth], depth +1);
     }
+
 
 }
