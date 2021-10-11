@@ -3,7 +3,7 @@ package com.baekjoon.stack;
 import java.util.Scanner;
 import java.util.Stack;
 
-// 3986번, 좋은 단어
+// 3986번, 좋은단어
 public class Practice05 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
