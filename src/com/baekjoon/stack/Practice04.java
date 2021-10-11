@@ -3,34 +3,31 @@ package com.baekjoon.stack;
 import java.util.Scanner;
 import java.util.Stack;
 
-// 3986번, 좋은 단어
+// 17608번, 막대기
 public class Practice04 {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int count = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        Stack<Integer> stack = new Stack<>();
 
-        int answer = 0;
-        for (int i = 0; i < count; i++) {
-            Stack<Character> stack = new Stack<>();
-            String str = scanner.next();
+        int num = sc.nextInt();
 
-            for (char c : str.toCharArray()) {
-                if(stack.isEmpty()) {
-                    stack.push(c);
-                    continue;
-                }
+        for (int i = 1; i <= num; i++) {
+            int temp = sc.nextInt();
 
-                if(stack.peek() ==  c)
-                    stack.pop();
-                else
-                    stack.push(c);
+            while (!stack.empty() && isVisible(stack, temp)) {
+                stack.pop();
             }
-
-            if(stack.isEmpty())
-                answer += 1;
+            stack.push(temp);
         }
 
-        System.out.println(answer);
+        System.out.println(stack.size());
+    }
+
+    // 현재 막대기의 길이가 stack의 top에 들어있는 막대기보다 크거나 같아서
+    // 왼쪽에서 봤을 때 막대기가 보이는지 여부를 리턴하는 함수
+    public static boolean isVisible(Stack stack, int temp) {
+        int top = (int) stack.peek();
+
+        return temp >= top;
     }
 }
