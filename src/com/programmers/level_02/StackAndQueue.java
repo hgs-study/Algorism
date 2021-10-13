@@ -112,4 +112,41 @@ public class StackAndQueue {
         }
         return answer;
     }
+
+    //다리를 지나는 트럭
+    public int solution4_1(int bridge_length, int weight, int[] truck_weights) {
+        int answer = 0;
+        int index = 0;
+        int completeTruckCnt = 0;
+
+        Queue<Integer> bridgeQ = new LinkedList<>();
+
+        while(completeTruckCnt < truck_weights.length){
+            answer++;
+
+            if (bridgeQ.size() == bridge_length){
+                int truck = bridgeQ.peek();
+
+                if (truck > 0){
+                    completeTruckCnt++;
+                }
+
+                bridgeQ.remove();
+            }
+
+            int tempweigth = bridgeQ.stream().reduce((a,b) -> a+b).orElse(0);
+
+            if ((index <= truck_weights.length -1 ) &&
+                    (tempweigth + truck_weights[index] <= weight)){
+                bridgeQ.offer(truck_weights[index]);
+
+                index++;
+
+            } else {
+                bridgeQ.offer(0);
+            }
+        }
+
+        return answer;
+    }
 }
