@@ -155,4 +155,21 @@ public class Sort {
         int rightNum = number * A[0] * A[1];
         return Math.max(leftNum,rightNum);
     }
+
+    public String solution(int n) {
+        String answer = "";
+        int remainder =
+                (n % 10 == 1) ? 1 :
+                (n % 10 == 2) ? 2 :
+                (n % 10 == 3) ? 3 :
+                (n % 10 == 4) ? 4 :
+                (n % 10 == 5) ? 5 :
+                (n % 10 == 6) ? 6 :
+                (n % 10 == 7) ? 7 :
+                (n % 10 == 8) ? 8 :
+                (n % 10 == 9) ? 9 : 0;
+
+//        if(n % 10 == 1)
+        return answer;
+    }
 }
