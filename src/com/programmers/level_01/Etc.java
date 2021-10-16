@@ -78,4 +78,52 @@ public class Etc {
 
         return answer;
     }
+
+
+    private int answer = 0;
+
+    public int solution(int[] nums) {
+        boolean[] visited = new boolean[nums.length];
+
+
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 0;
+            int count = 1;
+            if(!visited[i])
+                dfs(nums,visited,count, sum,i);
+        }
+        return answer;
+    }
+
+    private void dfs(int[] nums, boolean[] visited,int count, int sum, int depth){
+        System.out.println("depth11 = " + depth);
+
+        System.out.println("depth22 = " + depth);
+        visited[depth] = true;
+        sum += nums[depth];
+        if(count == 3) {
+            if(isPrime(sum)) {
+                answer++;
+            }
+            count = 2;
+        }
+        if(depth == nums.length )
+            return;
+        dfs(nums,visited,count + 1,sum,depth +1);
+        visited[depth] = false;
+    }
+
+    private boolean isPrime(int number){
+        if(number == 0 || number ==1)
+            return false;
+
+        if(number == 2)
+            return true;
+
+        for (int i = 2; i < number; i++) {
+            if(number % i ==0 )
+                return false;
+        }
+        return true;
+    }
 }
